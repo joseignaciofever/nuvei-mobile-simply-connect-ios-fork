@@ -1,4 +1,4 @@
-# Nuvei Mobile SDK for iOS
+# Nuvei SimplyConnect SDK for iOS
 
 ## DOCUMENTATION
 See [Documentaion](https://docs.nuvei.com/documentation/accept-payment/mobile-sdk/ios-native-sdk)
