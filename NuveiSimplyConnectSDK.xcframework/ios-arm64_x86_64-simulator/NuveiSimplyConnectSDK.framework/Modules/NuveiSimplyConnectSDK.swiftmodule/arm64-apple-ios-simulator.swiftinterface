@@ -23,7 +23,7 @@ import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
 public enum NVFailure : Swift.Error {
-  case unknown, invalidInput, notSetup, `internal`(Swift.Int, Swift.String, [Swift.String : Any]?)
+  case unknown, invalidInput([NuveiSimplyConnectSDK.InputError]), notSetup, `internal`(Swift.Int, Swift.String, [Swift.String : Any]?)
   public var code: Swift.Int {
     get
   }
@@ -71,7 +71,7 @@ public class NuveiButtonCustomization : NuveiSimplyConnectSDK.NuveiBaseCustomiza
   @objc override dynamic public init()
   @objc deinit
 }
-public class NVBillingAddress : Swift.Encodable {
+public class NVBillingAddress : Swift.Encodable, Swift.Decodable {
   final public let firstName: Swift.String?
   final public let lastName: Swift.String?
   final public let country: Swift.String?
@@ -91,8 +91,9 @@ public class NVBillingAddress : Swift.Encodable {
   public init(firstName: Swift.String? = nil, lastName: Swift.String? = nil, country: Swift.String? = nil, state: Swift.String? = nil, county: Swift.String? = nil, city: Swift.String? = nil, address: Swift.String? = nil, addressLine2: Swift.String? = nil, addressLine3: Swift.String? = nil, zip: Swift.String? = nil, addressMatch: Swift.String? = nil, email: Swift.String? = nil, phone: Swift.String? = nil, cell: Swift.String? = nil, homePhone: Swift.String? = nil, workPhone: Swift.String? = nil)
   public func encode(to encoder: any Swift.Encoder) throws
   @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
 }
-public class NVShippingAddress : Swift.Encodable {
+public class NVShippingAddress : Swift.Encodable, Swift.Decodable {
   final public let firstName: Swift.String?
   final public let lastName: Swift.String?
   final public let country: Swift.String?
@@ -110,6 +111,7 @@ public class NVShippingAddress : Swift.Encodable {
   public init(firstName: Swift.String? = nil, lastName: Swift.String? = nil, country: Swift.String? = nil, state: Swift.String? = nil, county: Swift.String? = nil, city: Swift.String? = nil, address: Swift.String? = nil, addressLine2: Swift.String? = nil, addressLine3: Swift.String? = nil, zip: Swift.String? = nil, addressMatch: Swift.String? = nil, email: Swift.String? = nil, phone: Swift.String? = nil, cell: Swift.String? = nil)
   public func encode(to encoder: any Swift.Encoder) throws
   @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
 }
 @available(*, deprecated, message: "Use `NVInput` instead")
 public typealias Authenticate3dInput = NuveiSimplyConnectSDK.NVInput
@@ -119,7 +121,7 @@ public typealias UserDetails = NuveiSimplyConnectSDK.NVUserDetails
 public typealias MerchantDetails = NuveiSimplyConnectSDK.NVMerchantDetails
 @available(*, deprecated, message: "Use `NVDynamicDescriptor` instead")
 public typealias DynamicDescriptor = NuveiSimplyConnectSDK.NVDynamicDescriptor
-public struct NVInput : Swift.Encodable {
+public struct NVInput : Swift.Encodable, Swift.Decodable {
   public let sessionToken: Swift.String
   public let merchantId: Swift.String
   public let merchantSiteId: Swift.String
@@ -139,8 +141,9 @@ public struct NVInput : Swift.Encodable {
   public let requestTimeout: Swift.Int
   public init(sessionToken: Swift.String, merchantId: Swift.String, merchantSiteId: Swift.String, currency: Swift.String, amount: Swift.String, paymentOption: NuveiSimplyConnectSDK.NVPaymentOption, userTokenId: Swift.String? = nil, clientUniqueId: Swift.String? = nil, clientRequestId: Swift.String? = nil, customData: Swift.String? = nil, billingAddress: NuveiSimplyConnectSDK.NVBillingAddress? = nil, shippingAddress: NuveiSimplyConnectSDK.NVShippingAddress? = nil, userDetails: NuveiSimplyConnectSDK.NVUserDetails? = nil, merchantDetails: NuveiSimplyConnectSDK.NVMerchantDetails? = nil, dynamicDescriptor: NuveiSimplyConnectSDK.NVDynamicDescriptor? = nil, timeout: Swift.Int = 10, requestTimeout: Swift.Int = 40)
   public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
-public struct NVUserDetails : Swift.Encodable {
+public struct NVUserDetails : Swift.Encodable, Swift.Decodable {
   public let firstName: Swift.String?
   public let lastName: Swift.String?
   public let address: Swift.String?
@@ -153,8 +156,9 @@ public struct NVUserDetails : Swift.Encodable {
   public let county: Swift.String?
   public init(firstName: Swift.String? = nil, lastName: Swift.String? = nil, address: Swift.String? = nil, zip: Swift.String? = nil, state: Swift.String? = nil, email: Swift.String? = nil, phone: Swift.String? = nil, city: Swift.String? = nil, country: Swift.String? = nil, county: Swift.String? = nil)
   public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
-public struct NVMerchantDetails : Swift.Encodable {
+public struct NVMerchantDetails : Swift.Encodable, Swift.Decodable {
   public let customField1: Swift.String?
   public let customField2: Swift.String?
   public let customField3: Swift.String?
@@ -172,14 +176,16 @@ public struct NVMerchantDetails : Swift.Encodable {
   public let customField15: Swift.String?
   public init(customField1: Swift.String? = nil, customField2: Swift.String? = nil, customField3: Swift.String? = nil, customField4: Swift.String? = nil, customField5: Swift.String? = nil, customField6: Swift.String? = nil, customField7: Swift.String? = nil, customField8: Swift.String? = nil, customField9: Swift.String? = nil, customField10: Swift.String? = nil, customField11: Swift.String? = nil, customField12: Swift.String? = nil, customField13: Swift.String? = nil, customField14: Swift.String? = nil, customField15: Swift.String? = nil)
   public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
-public struct NVDynamicDescriptor : Swift.Encodable {
+public struct NVDynamicDescriptor : Swift.Encodable, Swift.Decodable {
   public let merchantName: Swift.String?
   public let merchantPhone: Swift.String?
   public init(merchantName: Swift.String? = nil, merchantPhone: Swift.String? = nil)
   public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
-public enum InputError {
+public enum InputError : Swift.Int, Swift.Codable {
   case numberEmpty
   case creditCardInvalid
   case expiryEmpty
@@ -188,9 +194,9 @@ public enum InputError {
   case cvvInvalid
   case holderNameEmpty
   case holderNameInvalid
-  public static func == (a: NuveiSimplyConnectSDK.InputError, b: NuveiSimplyConnectSDK.InputError) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
     get
   }
 }
@@ -346,19 +352,24 @@ extension UIKit.UIColor {
 public typealias PaymentOption = NuveiSimplyConnectSDK.NVPaymentOption
 @available(*, deprecated, message: "Use `NVCardDetails` instead")
 public typealias CardDetails = NuveiSimplyConnectSDK.NVCardDetails
-public struct NVPaymentOption : Swift.Encodable {
+public struct NVPaymentOption : Swift.Encodable, Swift.Decodable {
   public let userPaymentOptionId: Swift.String?
   public let paymentMethod: Swift.String?
   public let card: NuveiSimplyConnectSDK.NVCardDetails?
   public let savePm: Swift.Bool?
   public let alternativePaymentMethod: NuveiSimplyConnectSDK.NVPaymentOption.AlternativePaymentMethod?
   public init(paymentMethod: Swift.String? = nil, userPaymentOptionId: Swift.String? = nil, card: NuveiSimplyConnectSDK.NVCardDetails? = nil, saveMethod: Swift.Bool? = nil, alternativePaymentMethod: NuveiSimplyConnectSDK.NVPaymentOption.AlternativePaymentMethod? = nil) throws
-  public struct AlternativePaymentMethod : Swift.Encodable {
+  public struct AlternativePaymentMethod : Swift.Encodable, Swift.Decodable {
+    public let paymentMethod: Swift.String?
+    public let fields: [Swift.String : Swift.String]?
+    public init(paymentMethod: Swift.String?, fields: [Swift.String : Swift.String]?)
     public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
-public struct NVCardDetails : Swift.Encodable {
+public struct NVCardDetails : Swift.Encodable, Swift.Decodable {
   public let cardNumber: Swift.String?
   public let cardHolderName: Swift.String?
   public let CVV: Swift.String?
@@ -367,17 +378,46 @@ public struct NVCardDetails : Swift.Encodable {
   public let externalToken: NuveiSimplyConnectSDK.NVCardDetails.ExternalToken?
   public init(cvv: Swift.String? = nil)
   public init(cardNumber: Swift.String? = nil, cardHolderName: Swift.String? = nil, cvv: Swift.String? = nil, expirationMonth: Swift.String?, expirationYear: Swift.String?, externalToken: NuveiSimplyConnectSDK.NVCardDetails.ExternalToken? = nil)
-  public struct ExternalToken : Swift.Encodable {
+  public struct ExternalToken : Swift.Encodable, Swift.Decodable {
     public let externalTokenProvider: Swift.String
     public let mobileToken: Swift.String
     public init(externalTokenProvider: Swift.String, mobileToken: Swift.String)
     public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
-public struct CheckoutTransactionDetails {
+extension Swift.String {
+  public var onlyDigits: Swift.String {
+    get
+  }
+}
+public struct CheckoutTransactionDetails : Swift.Codable {
   public init(sessionToken: Swift.String, merchantId: Swift.String, merchantSiteId: Swift.String, currency: Swift.String, amount: Swift.String, userTokenId: Swift.String?, clientUniqueId: Swift.String?, clientRequestId: Swift.String?, customData: Swift.String?, billingAddress: NuveiSimplyConnectSDK.NVBillingAddress?, shippingAddress: NuveiSimplyConnectSDK.NVShippingAddress?, userDetails: NuveiSimplyConnectSDK.NVUserDetails?, merchantDetails: NuveiSimplyConnectSDK.NVMerchantDetails?, dynamicDescriptor: NuveiSimplyConnectSDK.NVDynamicDescriptor?, paymentOption: NuveiSimplyConnectSDK.NVPaymentOption?, countryOverrde: Swift.String?, forceWebChallenge: Swift.Bool)
   public static func transactionDetails(from object: NuveiSimplyConnectSDK.NVInput, additionalParams: [Swift.String : Any]?, forceWebChallenge: Swift.Bool) -> NuveiSimplyConnectSDK.CheckoutTransactionDetails
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class CreditCardInput : Swift.Codable {
+  public var number: Swift.String
+  public var expiry: Swift.String
+  public var cvv: Swift.String
+  public var cardHolderName: Swift.String
+  public var shouldSaveCard: Swift.Bool
+  public var indexPath: Foundation.IndexPath?
+  public var parsedInfo: NuveiSimplyConnectSDK.CreditCardInput.ParsedInfo
+  @_hasMissingDesignatedInitializers public class ParsedInfo : Swift.Codable {
+    public var errors: [NuveiSimplyConnectSDK.InputError]?
+    public var icon: Swift.String?
+    public var cvvLength: Swift.Int?
+    @objc deinit
+    public func encode(to encoder: any Swift.Encoder) throws
+    required public init(from decoder: any Swift.Decoder) throws
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
 }
 public class NuveiFieldCustomization : NuveiSimplyConnectSDK.NuveiUICustomization {
   public init(logo: UIKit.UIImage? = nil, toolbarCustomization: NuveiSimplyConnectSDK.NuveiToolbarCustomization = NuveiToolbarCustomization(), labelCustomization: NuveiSimplyConnectSDK.NuveiLabelCustomization = NuveiLabelCustomization(), textBoxCustomization: NuveiSimplyConnectSDK.NuveiTextBoxCustomization = NuveiTextBoxCustomization(), errorLabelCustomization: NuveiSimplyConnectSDK.NuveiLabelCustomization = NuveiLabelCustomization(textColor: .red), placeholderCustomization: NuveiSimplyConnectSDK.NuveiTextBoxCustomization = NuveiTextBoxCustomization(), backgroundColor: UIKit.UIColor = .white, borderColor: UIKit.UIColor = .black, cornerRadius: Swift.Int = 0, borderWidth: Swift.Int = 1)
@@ -423,6 +463,12 @@ public class NuveiUICustomization {
   }
   @objc deinit
 }
+extension Swift.Dictionary {
+  public subscript(nested keyPath: Swift.String) -> Any? {
+    get
+    set
+  }
+}
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class CheckoutViewController : UIKit.UIViewController {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
     @objc get
@@ -451,6 +497,24 @@ public protocol JSONWebEncryptionHeader {
 @_inheritsConvenienceInitializers public class NVCreatePaymentOutput : NuveiSimplyConnectSDK.NVOutput {
   override public init(result: NuveiSimplyConnectSDK.NVOutput.NVOutputResult, userPaymentOptionId: Swift.String? = nil, ccCardNumber: Swift.String? = nil, bin: Swift.String? = nil, last4Digits: Swift.String? = nil, ccExpMonth: Swift.String? = nil, ccExpYear: Swift.String? = nil, transactionId: Swift.String? = nil, threeDReasonId: Swift.String? = nil, threeDReason: Swift.String? = nil, challengePreferenceReason: Swift.String? = nil, isLiabilityOnIssuer: Swift.Bool? = nil, challengeCancelReasonId: Swift.String? = nil, challengeCancelReason: Swift.String? = nil, errorCode: Swift.Int? = nil, errorDescription: Swift.String? = nil, rawResult: [Swift.String : Any]? = nil)
   @objc deinit
+}
+@_hasMissingDesignatedInitializers public class CreditCardFieldViewModel {
+  public static func modelForRN() -> NuveiSimplyConnectSDK.CreditCardFieldViewModel
+  public func parseCreditCardInfo(input: NuveiSimplyConnectSDK.CreditCardInput, hasFocus: Swift.Bool = false, ignoreEmpty: Swift.Bool = true)
+  public func tokenize(input: NuveiSimplyConnectSDK.CreditCardInput, transactionDetails: NuveiSimplyConnectSDK.CheckoutTransactionDetails, callback: @escaping (Swift.String?, Swift.String?) -> ()) throws
+  @objc deinit
+}
+extension Swift.String {
+  public var formatAsCreditCardNumber: Swift.String {
+    get
+  }
+  public var formatAsDate: Swift.String {
+    get
+  }
+  public func formatAsCVV(length: Swift.Int) -> Swift.String
+  public var asBase64Image: Swift.String? {
+    get
+  }
 }
 public protocol NVUIOwner {
   func getNVUIOwnerViewController() -> UIKit.UIViewController
@@ -501,6 +565,7 @@ extension NuveiSimplyConnectSDK.NuveiButtonType : Swift.Equatable {}
 extension NuveiSimplyConnectSDK.NuveiButtonType : Swift.Hashable {}
 extension NuveiSimplyConnectSDK.InputError : Swift.Equatable {}
 extension NuveiSimplyConnectSDK.InputError : Swift.Hashable {}
+extension NuveiSimplyConnectSDK.InputError : Swift.RawRepresentable {}
 extension NuveiSimplyConnectSDK.NVOutput.NVOutputResult : Swift.Equatable {}
 extension NuveiSimplyConnectSDK.NVOutput.NVOutputResult : Swift.Hashable {}
 extension NuveiSimplyConnectSDK.NVOutput.NVOutputResult : Swift.RawRepresentable {}

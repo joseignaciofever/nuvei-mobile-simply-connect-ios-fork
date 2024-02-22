@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
-  s.name = "NuveiSimplyConnectSDK"
-  s.version = "1.0.0"
-  s.summary = "NuveiSimplyConnectSDK"
+  s.name = "NuveiSimplyConnect"
+  s.version = "1.1.0"
+  s.summary = "NuveiSimplyConnect"
   s.description = <<-DESC
-  NuveiSimplyConnectSDK
+  NuveiSimplyConnect SDK
   DESC
 
   s.homepage = "https://github.com/nuvei/nuvei-mobile-simply-connect-ios"
