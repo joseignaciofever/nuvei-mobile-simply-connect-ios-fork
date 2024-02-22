@@ -43108,7 +43108,7 @@
       "kind": "StringLiteral",
       "offset": 1228,
       "length": 7,
-      "value": "\"1.1.0\""
+      "value": "\"1.1.1\""
     },
     {
       "filePath": "\/Users\/michaelkessler\/Projects\/Nuvei\/SimplyConnectSDK\/SimplyConnectSDK-iOS\/NuveiMobileSDK\/NuveiSimplyConnectSDK.swift",

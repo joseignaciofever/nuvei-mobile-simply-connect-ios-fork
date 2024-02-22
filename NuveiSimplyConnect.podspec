@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "NuveiSimplyConnect"
-  s.version = "1.1.0"
+  s.version = "1.1.1"
   s.summary = "NuveiSimplyConnect"
   s.description = <<-DESC
   NuveiSimplyConnect SDK
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage = "https://github.com/nuvei/nuvei-mobile-simply-connect-ios"
   s.license = "Commercial"
   s.author = "Nuvei"
-  s.platform = :ios, "12.1"
+  s.platform = :ios, "13.4"
   s.source = { :git => "https://github.com/nuvei/nuvei-mobile-simply-connect-ios", :tag => "#{s.version}" }
   
   s.source_files  = ""

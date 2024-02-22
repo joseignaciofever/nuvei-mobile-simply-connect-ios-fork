@@ -43108,7 +43108,7 @@
       "kind": "StringLiteral",
       "offset": 1228,
       "length": 7,
-      "value": "\"1.1.0\""
+      "value": "\"1.1.1\""
     },
     {
       "filePath": "\/Users\/michaelkessler\/Projects\/Nuvei\/SimplyConnectSDK\/SimplyConnectSDK-iOS\/NuveiMobileSDK\/NuveiSimplyConnectSDK.swift",
@@ -43435,30 +43435,30 @@
     {
       "filePath": "\/Users\/michaelkessler\/Library\/Developer\/Xcode\/DerivedData\/NuveiMobileSDK-agvhjqrlmqnjiaeyhowahjhtsjxv\/Build\/Intermediates.noindex\/ArchiveIntermediates\/NuveiSimplyConnectSDK\/IntermediateBuildFilesPath\/NuveiMobileSDK.build\/Release-iphonesimulator\/NuveiSimplyConnectSDK.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 723,
-      "length": 21,
-      "value": "\"Checkout\/Background\""
-    },
-    {
-      "filePath": "\/Users\/michaelkessler\/Library\/Developer\/Xcode\/DerivedData\/NuveiMobileSDK-agvhjqrlmqnjiaeyhowahjhtsjxv\/Build\/Intermediates.noindex\/ArchiveIntermediates\/NuveiSimplyConnectSDK\/IntermediateBuildFilesPath\/NuveiMobileSDK.build\/Release-iphonesimulator\/NuveiSimplyConnectSDK.build\/DerivedSources\/GeneratedAssetSymbols.swift",
-      "kind": "StringLiteral",
-      "offset": 997,
+      "offset": 829,
       "length": 28,
       "value": "\"Checkout\/Header\/Background\""
     },
     {
       "filePath": "\/Users\/michaelkessler\/Library\/Developer\/Xcode\/DerivedData\/NuveiMobileSDK-agvhjqrlmqnjiaeyhowahjhtsjxv\/Build\/Intermediates.noindex\/ArchiveIntermediates\/NuveiSimplyConnectSDK\/IntermediateBuildFilesPath\/NuveiMobileSDK.build\/Release-iphonesimulator\/NuveiSimplyConnectSDK.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 1185,
+      "offset": 1017,
       "length": 27,
       "value": "\"Checkout\/Header\/Separator\""
     },
     {
       "filePath": "\/Users\/michaelkessler\/Library\/Developer\/Xcode\/DerivedData\/NuveiMobileSDK-agvhjqrlmqnjiaeyhowahjhtsjxv\/Build\/Intermediates.noindex\/ArchiveIntermediates\/NuveiSimplyConnectSDK\/IntermediateBuildFilesPath\/NuveiMobileSDK.build\/Release-iphonesimulator\/NuveiSimplyConnectSDK.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 1364,
+      "offset": 1196,
       "length": 23,
       "value": "\"Checkout\/Header\/Title\""
+    },
+    {
+      "filePath": "\/Users\/michaelkessler\/Library\/Developer\/Xcode\/DerivedData\/NuveiMobileSDK-agvhjqrlmqnjiaeyhowahjhtsjxv\/Build\/Intermediates.noindex\/ArchiveIntermediates\/NuveiSimplyConnectSDK\/IntermediateBuildFilesPath\/NuveiMobileSDK.build\/Release-iphonesimulator\/NuveiSimplyConnectSDK.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 1377,
+      "length": 21,
+      "value": "\"Checkout\/Background\""
     },
     {
       "filePath": "\/Users\/michaelkessler\/Library\/Developer\/Xcode\/DerivedData\/NuveiMobileSDK-agvhjqrlmqnjiaeyhowahjhtsjxv\/Build\/Intermediates.noindex\/ArchiveIntermediates\/NuveiSimplyConnectSDK\/IntermediateBuildFilesPath\/NuveiMobileSDK.build\/Release-iphonesimulator\/NuveiSimplyConnectSDK.build\/DerivedSources\/GeneratedAssetSymbols.swift",
