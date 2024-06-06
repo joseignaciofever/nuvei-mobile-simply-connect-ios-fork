@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "NuveiSimplyConnect"
-  s.version = "1.1.1"
+  s.version = "1.1.2"
   s.summary = "NuveiSimplyConnect"
   s.description = <<-DESC
   NuveiSimplyConnect SDK
@@ -16,10 +16,10 @@ Pod::Spec.new do |s|
 
   s.vendored_frameworks = 'NuveiSimplyConnectSDK.xcframework'
 
-  s.dependency 'Alamofire', '5.7.1'
-  s.dependency 'SwiftyJSON', '5.0.1'
-  s.dependency 'CryptoSwift', '1.4.0'
-  s.dependency 'JOSESwift', '2.4.0'
-  s.dependency 'TinyConstraints', '4.0.2'
-  s.dependency 'SDWebImage', '5.15.7'
+  s.dependency 'Alamofire', '~> 5.7'
+  s.dependency 'SwiftyJSON', '~> 5.0'
+  s.dependency 'CryptoSwift', '~> 1.4'
+  s.dependency 'JOSESwift', '~> 2.4'
+  s.dependency 'TinyConstraints', '~> 4.0'
+  s.dependency 'SDWebImage', '~> 5.15'
 end
